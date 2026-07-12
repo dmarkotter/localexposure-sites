@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en-ZA">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LocalExposure — AI-Search Websites for Johannesburg Home Service Contractors</title>
+<meta name="description" content="We build lead generation websites that AI search actually recommends. R4,997 to build, R2,497/mo for unlimited updates and ongoing AI optimization. Built for Johannesburg gate motor, alarm, roofing and HVAC contractors.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0A0A0A;
+    --bg-raised:#131210;
+    --line:#221F1A;
+    --text:#F2EEE6;
+    --text-muted:#8F897A;
+    --accent:#F4A620;
+    --accent-dim:#5c4419;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Archivo',sans-serif;
+    font-size:17px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    padding-bottom:0;
+  }
+
+  h1,h2,h3{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    letter-spacing:-0.02em;
+    line-height:1.08;
+  }
+
+  .mono{
+    font-family:'IBM Plex Mono',monospace;
+  }
+
+  .wrap{
+    max-width:1120px;
+    margin:0 auto;
+    padding:0 28px;
+  }
+
+  a{color:inherit;text-decoration:none;}
+
+  /* ---------- Buttons ---------- */
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    background:var(--accent);
+    color:#0A0A0A;
+    font-family:'IBM Plex Mono',monospace;
+    font-weight:600;
+    font-size:14px;
+    letter-spacing:0.02em;
+    text-transform:uppercase;
+    padding:16px 26px;
+    border-radius:2px;
+    transition:transform .15s ease, background .15s ease;
+  }
+  .btn:hover{background:#ffb84d;transform:translateY(-1px);}
+  .btn:focus-visible{outline:2px solid var(--text);outline-offset:3px;}
+
+  .btn-ghost{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    color:var(--text);
+    font-family:'IBM Plex Mono',monospace;
+    font-size:13px;
+    letter-spacing:0.02em;
+    text-transform:uppercase;
+    border:1px solid var(--line);
+    padding:15px 22px;
+    border-radius:2px;
+  }
+  .btn-ghost:hover{border-color:var(--accent);color:var(--accent);}
+
+  /* ---------- Nav ---------- */
+  header{
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:rgba(10,10,10,0.86);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:18px 28px;
+  }
+  .logo{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    font-size:19px;
+    letter-spacing:-0.01em;
+  }
+  .logo span{color:var(--accent);}
+  .nav-cta{display:none;}
+  @media(min-width:760px){ .nav-cta{display:inline-flex;} }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    padding:76px 0 90px;
+    border-bottom:1px solid var(--line);
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:56px;
+    align-items:center;
+  }
+  @media(min-width:900px){
+    .hero-grid{grid-template-columns:1.05fr 0.95fr;gap:48px;}
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--accent);
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:22px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:7px;height:7px;
+    background:var(--accent);
+    border-radius:50%;
+    display:inline-block;
+  }
+  .hero h1{
+    font-size:clamp(34px,5.4vw,58px);
+    max-width:14ch;
+  }
+  .hero-sub{
+    margin-top:26px;
+    font-size:18px;
+    color:var(--text-muted);
+    max-width:46ch;
+    line-height:1.65;
+  }
+  .hero-sub strong{color:var(--text);font-weight:600;}
+  .hero-ctas{
+    margin-top:34px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:14px;
+  }
+  .trade-tags{
+    margin-top:36px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    color:var(--text-muted);
+  }
+  .trade-tags span{
+    border:1px solid var(--line);
+    padding:6px 12px;
+    border-radius:20px;
+  }
+
+  /* ---------- AI answer mock (signature element) ---------- */
+  .ai-card{
+    background:var(--bg-raised);
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:22px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:13.5px;
+    line-height:1.7;
+    position:relative;
+    overflow:hidden;
+  }
+  .ai-card::before{
+    content:"AI SEARCH — LIVE";
+    display:block;
+    font-size:10px;
+    letter-spacing:0.14em;
+    color:var(--text-muted);
+    margin-bottom:16px;
+  }
+  .ai-query{
+    color:var(--text-muted);
+  }
+  .ai-query::before{content:"› ";color:var(--accent);}
+  .ai-answer{
+    margin-top:14px;
+    color:var(--text);
+    min-height:96px;
+  }
+  .ai-answer .biz-old{
+    color:var(--text-muted);
+    text-decoration:line-through;
+    text-decoration-color:#5a3a3a;
+  }
+  .ai-answer .biz-new{
+    color:var(--accent);
+    font-weight:600;
+  }
+  .cursor{
+    display:inline-block;
+    width:7px;height:14px;
+    background:var(--accent);
+    margin-left:2px;
+    animation:blink 1s step-end infinite;
+    vertical-align:middle;
+  }
+  @keyframes blink{50%{opacity:0;}}
+
+  /* ---------- What changed ---------- */
+  .section{
+    padding:84px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .section-head{
+    max-width:56ch;
+    margin-bottom:52px;
+  }
+  .section-head .eyebrow{margin-bottom:16px;}
+  .section-head h2{
+    font-size:clamp(28px,3.6vw,40px);
+  }
+  .section-head p{
+    margin-top:18px;
+    color:var(--text-muted);
+    font-size:16.5px;
+  }
+
+  .stat-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+  @media(min-width:760px){
+    .stat-grid{grid-template-columns:repeat(3,1fr);}
+  }
+  .stat{
+    background:var(--bg);
+    padding:36px 28px;
+  }
+  .stat .num{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:clamp(32px,4.2vw,44px);
+    color:var(--accent);
+    font-weight:600;
+  }
+  .stat .label{
+    margin-top:10px;
+    color:var(--text-muted);
+    font-size:14.5px;
+    max-width:32ch;
+  }
+
+  /* ---------- How it works ---------- */
+  .steps{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:0;
+  }
+  @media(min-width:760px){
+    .steps{grid-template-columns:repeat(3,1fr);}
+  }
+  .step{
+    padding:30px 28px 30px 0;
+    border-top:1px solid var(--line);
+  }
+  @media(min-width:760px){
+    .step{border-top:none;border-left:1px solid var(--line);padding:0 28px;}
+    .step:first-child{padding-left:0;}
+  }
+  .step .idx{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:13px;
+    color:var(--accent);
+    letter-spacing:0.08em;
+  }
+  .step h3{
+    margin-top:14px;
+    font-size:21px;
+    font-weight:600;
+  }
+  .step p{
+    margin-top:12px;
+    color:var(--text-muted);
+    font-size:15.5px;
+  }
+  .step .tag{
+    display:inline-block;
+    margin-top:16px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11.5px;
+    color:var(--text);
+    border:1px solid var(--line);
+    padding:4px 10px;
+    border-radius:20px;
+  }
+
+  /* ---------- Offer ---------- */
+  .offer-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:40px;
+  }
+  @media(min-width:900px){
+    .offer-grid{grid-template-columns:1fr 1fr;gap:56px;align-items:start;}
+  }
+  .offer-list{
+    list-style:none;
+  }
+  .offer-list li{
+    padding:16px 0;
+    border-top:1px solid var(--line);
+    display:flex;
+    gap:14px;
+    font-size:15.5px;
+    color:var(--text-muted);
+  }
+  .offer-list li:last-child{border-bottom:1px solid var(--line);}
+  .offer-list li::before{
+    content:"→";
+    color:var(--accent);
+    font-family:'IBM Plex Mono',monospace;
+    flex-shrink:0;
+  }
+  .offer-list li span{color:var(--text);}
+
+  .price-card{
+    background:var(--bg-raised);
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:36px;
+  }
+  .price-row{
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    gap:16px;
+    padding:18px 0;
+    border-top:1px solid var(--line);
+  }
+  .price-row:first-child{border-top:none;padding-top:0;}
+  .price-row .lbl{color:var(--text-muted);font-size:14.5px;}
+  .price-row .val{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:26px;
+    font-weight:600;
+    color:var(--accent);
+  }
+  .price-row .val small{
+    font-size:14px;
+    color:var(--text-muted);
+    font-weight:400;
+  }
+  .anchor{
+    margin-top:22px;
+    padding-top:22px;
+    border-top:1px solid var(--line);
+    font-size:14px;
+    color:var(--text-muted);
+  }
+  .anchor .was{text-decoration:line-through;color:#6b6b6b;}
+  .risk{
+    margin-top:22px;
+    padding:16px 18px;
+    background:#0f0e0c;
+    border:1px solid var(--line);
+    border-radius:4px;
+    font-size:14px;
+    color:var(--text-muted);
+  }
+  .price-card .btn{width:100%;justify-content:center;margin-top:26px;}
+  .fine{
+    margin-top:16px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    color:var(--text-muted);
+    text-align:center;
+  }
+
+  /* ---------- About ---------- */
+  .about p{
+    font-size:19px;
+    max-width:58ch;
+    color:var(--text-muted);
+    line-height:1.75;
+  }
+  .about p strong{color:var(--text);font-weight:600;}
+
+  /* ---------- Final CTA ---------- */
+  .final{
+    padding:100px 0 120px;
+    text-align:center;
+    border-bottom:none;
+  }
+  .final h2{
+    font-size:clamp(30px,5vw,50px);
+    max-width:18ch;
+    margin:0 auto;
+  }
+  .final-ctas{
+    margin-top:34px;
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:14px;
+  }
+  .final .phone{
+    margin-top:20px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:14px;
+    color:var(--text-muted);
+  }
+  .final .phone a{color:var(--text);border-bottom:1px solid var(--line);}
+
+  footer{
+    padding:32px 0 100px;
+    text-align:center;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    color:var(--text-muted);
+  }
+  @media(min-width:760px){ footer{padding-bottom:32px;} }
+
+  /* ---------- Sticky mobile footer ---------- */
+  .mobile-bar{
+    position:fixed;
+    bottom:0;left:0;right:0;
+    display:flex;
+    z-index:100;
+    background:var(--bg-raised);
+    border-top:1px solid var(--line);
+  }
+  .mobile-bar a{
+    flex:1;
+    text-align:center;
+    padding:16px 8px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12.5px;
+    letter-spacing:0.02em;
+    text-transform:uppercase;
+    font-weight:600;
+  }
+  .mobile-bar a.call{color:var(--text);border-right:1px solid var(--line);}
+  .mobile-bar a.book{background:var(--accent);color:#0A0A0A;}
+  @media(min-width:760px){ .mobile-bar{display:none;} }
+
+  @media(prefers-reduced-motion:reduce){
+    .cursor{animation:none;}
+    html{scroll-behavior:auto;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav wrap">
+    <div class="logo">Local<span>Exposure</span></div>
+    <a href="https://cal.com/localexposure" class="btn nav-cta">Book a call</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">Johannesburg · Home Service Contractors</div>
+      <h1>Your next customer already asked an AI who to call.</h1>
+      <p class="hero-sub">We build you a lead generation website that AI search actually recommends. <strong>R4,997 to build, R2,497 a month</strong> for unlimited updates and continuous AI optimization. Cancel anytime. The site is yours.</p>
+      <div class="hero-ctas">
+        <a href="https://cal.com/localexposure" class="btn">Book a 15-minute call</a>
+        <a href="https://wa.me/27790727530?text=Hi%2C%20I%27d%20like%20to%20find%20out%20more%20about%20the%20AI-search%20website%20offer." class="btn-ghost" target="_blank" rel="noopener">WhatsApp us</a>
+      </div>
+      <div class="trade-tags">
+        <span>Gate motor &amp; alarm installers</span>
+        <span>Roofing contractors</span>
+        <span>HVAC &amp; aircon installers</span>
+      </div>
+    </div>
+    <div class="ai-card">
+      <div class="ai-query">"best <span id="q-trade">gate motor installer</span> in <span id="q-suburb">Sandton</span>"</div>
+      <div class="ai-answer" id="ai-answer"></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">What changed</div>
+      <h2>Search changed in February 2026. Most contractors haven't.</h2>
+      <p>Google and ChatGPT stopped showing ten blue links to a lot of people searching for local trades. They started giving one answer. If your site isn't built for AI to read, you're not in the running.</p>
+    </div>
+    <div class="stat-grid">
+      <div class="stat">
+        <div class="num">60&ndash;95%</div>
+        <div class="label">of search traffic for local trades now goes to an AI answer instead of a list of websites</div>
+      </div>
+      <div class="stat">
+        <div class="num">4B+</div>
+        <div class="label">AI answers given every day across ChatGPT and Google AI, replacing traditional search results</div>
+      </div>
+      <div class="stat">
+        <div class="num">1</div>
+        <div class="label">business the AI recommends per search. Not ten options to click through. One name, or none</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">How it works</div>
+      <h2>Three steps. Live in 48 hours.</h2>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="idx">01 / Build</div>
+        <h3>We build it</h3>
+        <p>Your site goes live in 48 hours, structured to answer the exact questions AI search asks before it recommends a business: pricing, service area, response time, callout fees.</p>
+        <span class="tag">48 hours</span>
+      </div>
+      <div class="step">
+        <div class="idx">02 / Run</div>
+        <h3>AI runs it</h3>
+        <p>Local schema markup tells Google and AI tools you're a real, active business in your suburb. Leads land straight in your calendar, not a missed call.</p>
+        <span class="tag">Schema + booking</span>
+      </div>
+      <div class="step">
+        <div class="idx">03 / Grow</div>
+        <h3>You grow</h3>
+        <p>We keep publishing and optimizing every month as ChatGPT and Google AI change how they pick who to recommend. You just answer the phone.</p>
+        <span class="tag">Ongoing</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">The offer</div>
+      <h2>One website. Built for how people search now.</h2>
+    </div>
+    <div class="offer-grid">
+      <ul class="offer-list">
+        <li><span>Built to answer AI's questions.</span> Pricing, service area, response time and callout fees, structured the way AI search reads before it recommends a business.</li>
+        <li><span>Local schema markup</span> so Google and AI tools can verify you're a real, active business in your suburb.</li>
+        <li><span>A booking system</span> so leads land straight in your calendar, not a missed call.</li>
+        <li><span>Monthly content updates</span> that keep you ranking for "[your trade] [suburb]" searches.</li>
+        <li><span>Ongoing AI-search optimization</span> as ChatGPT and Google AI change how they pick who to recommend.</li>
+      </ul>
+      <div class="price-card">
+        <div class="price-row">
+          <div class="lbl">Build</div>
+          <div class="val">R4,997 <small>once-off</small></div>
+        </div>
+        <div class="price-row">
+          <div class="lbl">Updates + AI optimization</div>
+          <div class="val">R2,497 <small>/ month</small></div>
+        </div>
+        <div class="anchor">A typical agency website in Johannesburg costs <span class="was">R15,000&ndash;R25,000</span>, with no AI-search work included. Cancel anytime. The site is yours.</div>
+        <div class="risk">No leads from AI search in 90 days? We keep optimizing at no extra cost until it does.</div>
+        <a href="https://cal.com/localexposure" class="btn">Book a 15-minute call</a>
+        <div class="fine">One booked job pays for the site</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section about">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">About</div>
+      <h2>Built by someone who only does this.</h2>
+    </div>
+    <p>I've built websites since 2008, and LocalExposure only works with <strong>home service contractors</strong> - gate motor and alarm installers, roofers, and HVAC installers in Johannesburg. Not restaurants, not lawyers, not ecommerce. One playbook, refined across three trades, aimed at the businesses AI search is quietly deciding to skip.</p>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap">
+    <h2>Your competitors are already booking off this.</h2>
+    <div class="final-ctas">
+      <a href="https://cal.com/localexposure" class="btn">Book a 15-minute call</a>
+      <a href="https://wa.me/27790727530?text=Hi%2C%20I%27d%20like%20to%20find%20out%20more%20about%20the%20AI-search%20website%20offer." class="btn-ghost" target="_blank" rel="noopener">WhatsApp us</a>
+    </div>
+    <div class="phone">Or WhatsApp directly: <a href="https://wa.me/27790727530?text=Hi%2C%20I%27d%20like%20to%20find%20out%20more%20about%20the%20AI-search%20website%20offer." target="_blank" rel="noopener">079 072 7530</a></div>
+  </div>
+</section>
+
+<footer>
+  LocalExposure (Pty) Ltd &middot; CIPC 2026/266043/07 &middot; Johannesburg, South Africa
+</footer>
+
+<div class="mobile-bar">
+  <a href="https://wa.me/27790727530?text=Hi%2C%20I%27d%20like%20to%20find%20out%20more%20about%20the%20AI-search%20website%20offer." class="call" target="_blank" rel="noopener">WhatsApp</a>
+  <a href="https://cal.com/localexposure" class="book">Book a call</a>
+</div>
+
+<script>
+(function(){
+  var scenarios = [
+    { trade: "gate motor installer", suburb: "Sandton", old: "a national directory listing", biz: "your business" },
+    { trade: "roofing contractor", suburb: "Randburg", old: "an agency with no reviews", biz: "your business" },
+    { trade: "aircon installer", suburb: "Boksburg", old: "the first Google ad", biz: "your business" }
+  ];
+
+  var qTrade = document.getElementById('q-trade');
+  var qSuburb = document.getElementById('q-suburb');
+  var answerEl = document.getElementById('ai-answer');
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var lineA = "Based on service area, pricing and response time, I'd recommend ";
+  var lineB = " — verified, active, and covers your suburb.";
+
+  function typeText(el, text, speed, cb){
+    var i = 0;
+    el.textContent = "";
+    var cursor = document.createElement('span');
+    cursor.className = 'cursor';
+    function step(){
+      if(i <= text.length){
+        el.textContent = text.slice(0, i);
+        el.appendChild(cursor);
+        i++;
+        setTimeout(step, speed);
+      } else if(cb){ cb(); }
+    }
+    step();
+  }
+
+  function runScenario(idx){
+    var s = scenarios[idx % scenarios.length];
+    qTrade.textContent = s.trade;
+    qSuburb.textContent = s.suburb;
+
+    if(reduced){
+      answerEl.innerHTML = lineA + '<span class="biz-new">' + s.biz + '</span>' + lineB;
+      setTimeout(function(){ runScenario(idx+1); }, 3200);
+      return;
+    }
+
+    typeText(answerEl, lineA, 18, function(){
+      setTimeout(function(){
+        var strike = document.createElement('span');
+        strike.className = 'biz-old';
+        strike.textContent = s.old;
+        answerEl.appendChild(strike);
+        setTimeout(function(){
+          strike.remove();
+          var win = document.createElement('span');
+          win.className = 'biz-new';
+          typeText(win, s.biz, 30);
+          answerEl.appendChild(win);
+          var tail = document.createElement('span');
+          answerEl.appendChild(tail);
+          setTimeout(function(){
+            typeText(tail, lineB, 18, function(){
+              setTimeout(function(){ runScenario(idx+1); }, 2600);
+            });
+          }, s.biz.length * 30 + 150);
+        }, 900);
+      }, 200);
+    });
+  }
+
+  runScenario(0);
+})();
+</script>
+
+</body>
+</html>
