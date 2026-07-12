@@ -115,6 +115,24 @@
   .hero{
     padding:76px 0 90px;
     border-bottom:1px solid var(--line);
+    position:relative;
+    overflow:hidden;
+  }
+  .hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background-image:
+      linear-gradient(rgba(244,166,32,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(244,166,32,0.06) 1px, transparent 1px);
+    background-size:44px 44px;
+    -webkit-mask-image:linear-gradient(to bottom, black 0%, black 55%, transparent 100%);
+    mask-image:linear-gradient(to bottom, black 0%, black 55%, transparent 100%);
+    pointer-events:none;
+  }
+  .hero .wrap{
+    position:relative;
+    z-index:1;
   }
   .hero-grid{
     display:grid;
@@ -180,6 +198,7 @@
   .ai-card{
     background:var(--bg-raised);
     border:1px solid var(--line);
+    box-shadow:0 0 0 1px rgba(244,166,32,0.06), 0 0 60px -18px rgba(244,166,32,0.35);
     border-radius:6px;
     padding:22px;
     font-family:'IBM Plex Mono',monospace;
@@ -346,6 +365,7 @@
   .price-card{
     background:var(--bg-raised);
     border:1px solid var(--line);
+    box-shadow:0 0 0 1px rgba(244,166,32,0.06), 0 0 60px -18px rgba(244,166,32,0.35);
     border-radius:6px;
     padding:36px;
   }
@@ -410,6 +430,24 @@
     padding:100px 0 120px;
     text-align:center;
     border-bottom:none;
+    position:relative;
+    overflow:hidden;
+  }
+  .final::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background-image:
+      linear-gradient(rgba(244,166,32,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(244,166,32,0.06) 1px, transparent 1px);
+    background-size:44px 44px;
+    -webkit-mask-image:radial-gradient(ellipse at center, black 0%, transparent 72%);
+    mask-image:radial-gradient(ellipse at center, black 0%, transparent 72%);
+    pointer-events:none;
+  }
+  .final .wrap{
+    position:relative;
+    z-index:1;
   }
   .final h2{
     font-size:clamp(30px,5vw,50px);
