@@ -416,6 +416,41 @@
     text-align:center;
   }
 
+  /* ---------- Exclusivity ---------- */
+  .exclusivity-card{
+    background:var(--bg-raised);
+    border:1px solid var(--line);
+    box-shadow:0 0 0 1px rgba(244,166,32,0.06), 0 0 60px -18px rgba(244,166,32,0.35);
+    border-radius:6px;
+    padding:36px;
+  }
+  .exclusivity-card p{
+    color:var(--text-muted);
+    font-size:16px;
+    line-height:1.7;
+  }
+  .exclusivity-card p + p{margin-top:16px;}
+  .exclusivity-card strong{color:var(--text);font-weight:600;}
+  .exclusivity-status{
+    margin-top:24px;
+    padding-top:24px;
+    border-top:1px solid var(--line);
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12.5px;
+    color:var(--text-muted);
+  }
+  .exclusivity-status .dot{
+    width:7px;height:7px;
+    border-radius:50%;
+    background:var(--accent);
+    flex-shrink:0;
+    animation:blink 1.4s step-end infinite;
+  }
+  .exclusivity-card .btn{margin-top:26px;}
+
   /* ---------- About ---------- */
   .about p{
     font-size:19px;
@@ -620,6 +655,22 @@
         <a href="https://cal.com/localexposure" class="btn">Book a 15-minute call</a>
         <div class="fine">One booked job pays for the site</div>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Exclusivity</div>
+      <h2>Lock in your spot</h2>
+    </div>
+    <div class="exclusivity-card">
+      <p>We only work with <strong>one client per trade, per area</strong>. Once we take on a gate motor installer in Randburg, we won't sign another one in Randburg. Same goes for Sandton, Fourways, Roodepoort, and every other suburb we cover.</p>
+      <p>AI search doesn't show ten options when someone asks who to call. It picks one or two businesses to recommend for each area. If your competitor locks in their suburb before you do, the AI keeps sending them the leads, not you.</p>
+      <p><strong>Some areas are already taken.</strong> The ones still open won't stay that way for long. You keep your spot for as long as you stay a client, at the price you signed up at.</p>
+      <div class="exclusivity-status"><span class="dot"></span>Areas fill on a first-come basis, per trade</div>
+      <a href="https://cal.com/localexposure" class="btn">Check if your area is available</a>
     </div>
   </div>
 </section>
